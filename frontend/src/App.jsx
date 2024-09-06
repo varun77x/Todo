@@ -10,8 +10,16 @@ function App() {
   const [todos, setTodos] = useState([]);
 
   async function findTodos() {
-    const response = await axios.get('http://localhost:8100/findAll');
+    const response = await axios.get('http://localhost:8100/todos/find');
     setTodos(response.data);
+  }
+  async function addTodo(){
+    try {
+      await axios.post('http://localhost:8100/todos/create', { text });
+      setText("");  // Clear the input field
+      console.log("Todo added successfully");  
+    } catch (error) {
+      console.error('Error adding todo:', error); 
   }
 
 
@@ -33,17 +41,26 @@ function App() {
       }} type="text" placeholder='Type your todo' value={text} onChange={(e) => {
         setText(e.target.value);
       }}></input>
+      <br />
 
       <button style={{
         height: "40px",
         borderRadius: "5px",
         backgroundColor: "red"
 
-      }} onClick={findTodos}>Add Todo</button>
+      }} onClick={addTodo}>Add Todo</button>
+      <br />
+
+      <button style={{
+        height: "40px",
+        borderRadius: "5px",
+        backgroundColor: "red"
+
+      }} onClick={findTodos}>All Todo</button>
       <br />
 
       {
-        todos.map((todo,index) => 
+        todos.map((todo, index) =>
           <li key={index}>{todo.todo}</li>
         )
       }
