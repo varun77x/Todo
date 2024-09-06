@@ -5,12 +5,15 @@ import './App.css'
 import axios from 'axios';
 
 function App() {
-  const [todo, setTodo] = useState([]);
-  const [text,setText] = useState("");
-  function addTodo() {
-    console.log(2);
-    }
-  
+  // const [todo, setTodo] = useState([]);
+  const [text, setText] = useState("");
+  const [todos, setTodos] = useState([]);
+
+  async function findTodos() {
+    const response = await axios.get('http://localhost:8100/');
+    setTodos(response.data);
+  }
+
 
   return (
     <div style={{
@@ -27,8 +30,8 @@ function App() {
         backgroundColor: "lightgrey"
 
 
-      }} type="text" placeholder='Type your todo' value={todo} onChange={(e) => {
-        setTodo(...todo,e.target.value);
+      }} type="text" placeholder='Type your todo' value={text} onChange={(e) => {
+        setText(e.target.value);
       }}></input>
 
       <button style={{
@@ -36,7 +39,14 @@ function App() {
         borderRadius: "5px",
         backgroundColor: "red"
 
-      }} onClick={addTodo}>Add Todo</button>
+      }} onClick={findTodos}>Add Todo</button>
+      <br />
+
+      {
+        todos.map((todo,index) => 
+          <li key={index}>{todo.todo}</li>
+        )
+      }
 
 
     </div>
