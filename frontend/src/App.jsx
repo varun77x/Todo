@@ -10,7 +10,7 @@ function App() {
   const [todos, setTodos] = useState([]);
 
   async function findTodos() {
-    const response = await axios.get('http://localhost:8100/');
+    const response = await axios.get('http://localhost:8100/findAll');
     setTodos(response.data);
   }
 

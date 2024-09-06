@@ -12,29 +12,23 @@ mongoose.connect(process.env.MONGO_URI)
     .then(() => console.log('Connected to MongoDB'))
     .catch((error) => console.error('Error connecting to MongoDB:', error));
 
-const todoSchema = new mongoose.Schema({
-    todo: {
-        type: String,
-        required: true,
-    },
-});
+const todoRouter = require('./routes/todoRoutes');
 
-const Todo = mongoose.model('Todo', todoSchema);
+// async function random(){
 
-async function random(){
-
-    const newTodo = new Todo({
-        todo:"do some gym"
-    });
-    await newTodo.save();
-};
-random();
+//     const newTodo = new Todo({
+//         todo:"do some gym"
+//     });
+//     await newTodo.save();
+// };
+// random();
+app.use("/findAll",todoRouter);
 
 
-app.get("/", async (req, res) => {
-    const todosAll = await Todo.find();
-    res.json(todosAll);
+// app.get("/", async (req, res) => {
+//     const todosAll = await Todo.find();
+//     res.json(todosAll);
     
-});
+// });
 
 app.listen(process.env.PORT);
