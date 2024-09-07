@@ -13,61 +13,68 @@ function App() {
     const response = await axios.get('http://localhost:8100/todos/find');
     setTodos(response.data);
   }
-  async function addTodo(){
+  async function addTodo() {
     try {
       await axios.post('http://localhost:8100/todos/create', { text });
       setText("");  // Clear the input field
-      console.log("Todo added successfully");  
+      console.log("Todo added successfully");
     } catch (error) {
-      console.error('Error adding todo:', error); 
+      console.error('Error adding todo:', error);
+    }
   }
 
 
-  return (
-    <div style={{
-      padding: "5%"
-    }}>
+    return (
+      <div style={{
+        padding: "5%"
+      }}>
 
-      <input style={{
+        <input style={{
 
-        height: "40px",
-        width: "20%",
-        border: "1px solid black",
-        boxShadow: "10 10",
-        borderRadius: "5px",
-        backgroundColor: "lightgrey"
-
-
-      }} type="text" placeholder='Type your todo' value={text} onChange={(e) => {
-        setText(e.target.value);
-      }}></input>
-      <br />
-
-      <button style={{
-        height: "40px",
-        borderRadius: "5px",
-        backgroundColor: "red"
-
-      }} onClick={addTodo}>Add Todo</button>
-      <br />
-
-      <button style={{
-        height: "40px",
-        borderRadius: "5px",
-        backgroundColor: "red"
-
-      }} onClick={findTodos}>All Todo</button>
-      <br />
-
-      {
-        todos.map((todo, index) =>
-          <li key={index}>{todo.todo}</li>
-        )
-      }
+          height: "40px",
+          width: "20%",
+          border: "1px solid black",
+          boxShadow: "10 10",
+          borderRadius: "5px",
+          backgroundColor: "lightgrey"
 
 
-    </div>
-  )
-}
+        }} type="text" placeholder='Type your todo' value={text} onChange={(e) => {
+          setText(e.target.value);
+        }}></input>
+        <br />
 
-export default App
+        <button style={{
+          height: "40px",
+          borderRadius: "5px",
+          backgroundColor: "red"
+
+        }} onClick={addTodo}>Add Todo</button>
+        <br />
+
+        <button style={{
+          height: "40px",
+          borderRadius: "5px",
+          backgroundColor: "red",
+
+        }} onClick={findTodos}>All Todo</button>
+        <br />
+
+        {
+          todos.map((todo, index) =>
+            <div style={{
+              border:"2px solid black",
+              borderRadius:"10px",
+              padding:"5px",
+              margin:"2px",
+              width:"30%"
+            }} key={index}>{todo.todo}</div>
+          )
+        }
+
+
+      </div>
+    )
+  }
+
+  export default App;
