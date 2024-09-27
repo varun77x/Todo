@@ -37,6 +37,8 @@ body {
     border-radius: 7px;
     margin:auto;
     margin-top: 5px;
+    background-color: transparent;
+    
     /* padding:8px 5px; */
     color: rgb(236, 222, 222);
     font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif ;
@@ -46,7 +48,7 @@ body {
     justify-content: center;
     align-items: center;
     padding: 9px;
-    font-size: 16px;
+    font-size: 25px;
 }
 .todo-container input{
     border-radius: 7px 0px 0px 7px;
@@ -54,8 +56,16 @@ body {
     background-color: rgb(91, 54, 104);
     border:none;
     padding:9px;
-    font-size: 16px;
+    font-size: 25px;
+    width:100%;
     font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+}
+.todo-container button{
+    border:none;
+}
+#two{
+    border-left: 1px solid rgb(152, 147, 147);
+    border-radius: 0px 6px 6px 0px;
 }
 .button-class{
 
@@ -67,6 +77,6 @@ body {
 .button-class button{
     height: 100%;
     border: none;
-    border-radius: 0px 7px 7px 0px;
+    border-radius: 0px 6px 6px 0px;
     background-color: rgb(255, 255, 255);
 }

@@ -65,8 +65,8 @@ function App() {
                 <input type="text" value={text} onChange={(e) => {
                   setText(e.target.value);
                 }}></input>
-                <button onClick = {updateTodo}>update</button>
-                <button onClick = {()=>{
+                <button id='one' onClick = {updateTodo}>update</button>
+                <button id='two' onClick = {()=>{
                   setEditId(-1);
                 }}>cancel</button>
               </>)
