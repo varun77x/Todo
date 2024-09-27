@@ -1,0 +1,72 @@
+body {
+    height: 100vh; 
+    background-color: rgb(41, 41, 41); /* Make sure body and html are 100% height */
+    margin: 0;
+    padding: 0;
+    text-align: center;
+    
+}
+
+.outer-container {
+    width: 95vw; 
+    height: 100vh;  
+    background-color: rgb(27, 27, 27);
+    border-radius: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+
+    margin:auto;
+}
+.inner-container{
+    width:50%;
+    height:100%;
+    text-align: center;
+
+    background-color: rgb(92, 87, 126);
+}
+.todo-container{
+    display: flex;
+    justify-content: flex-start;
+    height: 40px;
+    width: 80%;
+    
+    
+    border: 1px solid white;
+    border-radius: 7px;
+    margin:auto;
+    margin-top: 5px;
+    /* padding:8px 5px; */
+    color: rgb(236, 222, 222);
+    font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif ;
+}
+.todo-container .inner-todo{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 9px;
+    font-size: 16px;
+}
+.todo-container input{
+    border-radius: 7px 0px 0px 7px;
+    color: rgb(236, 222, 222);
+    background-color: rgb(91, 54, 104);
+    border:none;
+    padding:9px;
+    font-size: 16px;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+}
+.button-class{
+
+    margin-left:auto;
+    border: none;
+    height: 100%;
+    
+}
+.button-class button{
+    height: 100%;
+    border: none;
+    border-radius: 0px 7px 7px 0px;
+    background-color: rgb(255, 255, 255);
+}

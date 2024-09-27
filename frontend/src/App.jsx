@@ -3,6 +3,7 @@ import reactLogo from './assets/react.svg'
 import viteLogo from '/vite.svg'
 import './App.css'
 import axios from 'axios';
+import './index.css';
 
 function App() {
   // const [todo, setTodo] = useState([]);
@@ -32,21 +33,10 @@ function App() {
 
 
   return (
-    <div style={{
-      padding: "5%"
-    }}>
+<div className='outer-container'>
+    <div className='inner-container'>
 
-      <input style={{
-
-        height: "40px",
-        width: "20%",
-        border: "1px solid black",
-        boxShadow: "10 10",
-        borderRadius: "5px",
-        backgroundColor: "lightgrey"
-
-
-      }} type="text" placeholder='Type your todo' value={text} onChange={(e) => {
+      <input type="text" placeholder='Type your todo' value={text} onChange={(e) => {
         setText(e.target.value);
       }}></input>
       <br />
@@ -54,7 +44,7 @@ function App() {
       <button style={{
         height: "40px",
         borderRadius: "5px",
-        backgroundColor: "red"
+        backgroundColor: "lightgreen"
 
       }} onClick={addTodo}>Add Todo</button>
       <br />
@@ -62,20 +52,14 @@ function App() {
       <button style={{
         height: "40px",
         borderRadius: "5px",
-        backgroundColor: "red",
+        backgroundColor: "lightgreen",
 
       }} onClick={findTodos}>All Todo</button>
       <br />
 
       {
         todos.map((todo, index) =>
-          <div style={{
-            border: "2px solid black",
-            borderRadius: "10px",
-            padding: "5px",
-            margin: "2px",
-            width: "30%"
-          }} key={todo._id}>
+          <div className='todo-container' key={todo._id}>
             {todo._id === editId ?
               (<>
                 <input type="text" value={text} onChange={(e) => {
@@ -88,14 +72,16 @@ function App() {
               </>)
               :
               (<>
-              {todo.todo}
+              <div className='inner-todo'>{todo.todo}</div>
+              
+              <div className = 'button-class'>
               <button onClick={() => {
                 setEditId(todo._id);
                 setText(todo.todo);
                 
                 
-              }}>edit todo</button>
-            
+              }}>edit</button>
+            </div>
               </>)
             }
             </div>
@@ -104,6 +90,7 @@ function App() {
       }
 
 
+    </div>
     </div>
   )
 }
