@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import reactLogo from './assets/react.svg'
 import viteLogo from '/vite.svg'
 import './App.css'
@@ -15,6 +15,10 @@ function App() {
     const response = await axios.get('http://localhost:8100/todos/find');
     setTodos(response.data);
   }
+  useEffect(()=>{
+    findTodos();
+  },[todos]);
+
   async function addTodo() {
     try {
       await axios.post('http://localhost:8100/todos/create', { text });
@@ -34,7 +38,9 @@ function App() {
 
   return (
 <div className='outer-container'>
+  
     <div className='inner-container'>
+    <div class="header-class">NOTE TAKING APPLICATION</div><br />
 
       <input type="text" placeholder='Type your todo' value={text} onChange={(e) => {
         setText(e.target.value);
@@ -49,13 +55,13 @@ function App() {
       }} onClick={addTodo}>Add Todo</button>
       <br />
 
-      <button style={{
+      {/* <button style={{
         height: "40px",
         borderRadius: "5px",
         backgroundColor: "lightgreen",
 
       }} onClick={findTodos}>All Todo</button>
-      <br />
+      <br /> */}
 
       {
         todos.map((todo, index) =>
