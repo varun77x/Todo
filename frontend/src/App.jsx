@@ -47,12 +47,7 @@ function App() {
       }}></input>
       <br />
 
-      <button style={{
-        height: "40px",
-        borderRadius: "5px",
-        backgroundColor: "lightgreen"
-
-      }} onClick={addTodo}>Add Todo</button>
+      <button id="add-todo" onClick={addTodo}>Add Todo</button>
       <br />
 
       {/* <button style={{

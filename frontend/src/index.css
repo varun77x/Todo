@@ -46,6 +46,31 @@ body {
     background-color: rgb(65, 159, 247);
     border-bottom: 2px solid rgb(59, 127, 179);
 }
+#add-todo{
+    margin-top:10px;
+    margin-bottom:10px;
+    border:none;
+    border-bottom:1.5px solid rgb(37, 120, 59);
+    color:#fff;
+    width:100px;
+    height: 50px;
+    padding:12px;
+    background-color: lightgreen;
+    font-size: medium;
+    font-weight:bold;
+    transition: all 1s;
+    /* font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif; */
+
+}
+#add-todo:hover{
+    font-size: large;
+    padding:5px;
+    width:120px;
+    height: 60px;
+    border-radius: 10px;
+    background-color: rgb(72, 72, 181);
+
+}
 .todo-container{
     display: flex;
     justify-content: flex-start;
