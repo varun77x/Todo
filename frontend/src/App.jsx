@@ -40,9 +40,9 @@ function App() {
 <div className='outer-container'>
   
     <div className='inner-container'>
-    <div class="header-class">NOTE TAKING APPLICATION</div><br />
+    <div class="header-class">TODO APPLICATION</div><br />
 
-      <input type="text" placeholder='Type your todo' value={text} onChange={(e) => {
+      <input id="todo-input" type="text" placeholder='Type your todo' value={text} onChange={(e) => {
         setText(e.target.value);
       }}></input>
       <br />
