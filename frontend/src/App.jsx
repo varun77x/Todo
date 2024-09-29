@@ -10,6 +10,7 @@ function App() {
   const [text, setText] = useState("");
   const [todos, setTodos] = useState([]);
   const [editId , setEditId] = useState(-1);
+  const [editText,setEditText] = useState("");
 
   async function findTodos() {
     const response = await axios.get('http://localhost:8100/todos/find');
@@ -34,13 +35,16 @@ function App() {
     setText("");
     setEditId(-1);
   }
+  function deleteTodo(){
+    let a = 2;
+  }
 
 
   return (
 <div className='outer-container'>
   
     <div className='inner-container'>
-    <div class="header-class">TODO APPLICATION</div><br />
+    <div class="header-class">TODO APPLICATION</div>
 
       <input id="todo-input" type="text" placeholder='Type your todo' value={text} onChange={(e) => {
         setText(e.target.value);
@@ -67,6 +71,7 @@ function App() {
                   setText(e.target.value);
                 }}></input>
                 <button id='one' onClick = {updateTodo}>update</button>
+                <button id='delete-button' onClick={deleteTodo}>delete</button>
                 <button id='two' onClick = {()=>{
                   setEditId(-1);
                 }}>cancel</button>
