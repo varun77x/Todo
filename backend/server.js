@@ -13,8 +13,11 @@ mongoose.connect(process.env.MONGO_URI)
     .catch((error) => console.error('Error connecting to MongoDB:', error));
 
 const todoRouter = require('./routes/todoRoutes');
+app.get("/",(req,res)=>{
+    res.send("okok");
+});
 
 app.use("/todos",todoRouter);
 
 
-app.listen(process.env.PORT);
+app.listen(process.env.PORT,'0.0.0.0');

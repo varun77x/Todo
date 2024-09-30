@@ -13,7 +13,7 @@ function App() {
   const [editText,setEditText] = useState("");
 
   async function findTodos() {
-    const response = await axios.get('http://localhost:8100/todos/find');
+    const response = await axios.get('http://192.168.0.105:8100/todos/find');
     setTodos(response.data);
   }
   useEffect(()=>{
@@ -22,7 +22,7 @@ function App() {
 
   async function addTodo() {
     try {
-      await axios.post('http://localhost:8100/todos/create', { text });
+      await axios.post('http://192.168.0.105:8100/todos/create', { text });
       setText("");  // Clear the input field
       console.log("Todo added successfully");
     } catch (error) {
@@ -31,7 +31,7 @@ function App() {
   }
 
   async function updateTodo(){
-    await axios.put(`http://localhost:8100/todos/update/${editId}`, { text });
+    await axios.put(`http://192.168.0.105:8100/todos/update/${editId}`, { text });
     setText("");
     setEditId(-1);
   }
