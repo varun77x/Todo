@@ -18,12 +18,13 @@ function App() {
   }
   useEffect(()=>{
     findTodos();
-  },[todos]);
+  },[]);
 
   async function addTodo() {
     try {
       await axios.post('http://192.168.0.105:8100/todos/create', { text });
       setText("");  // Clear the input field
+      await findTodos();
       console.log("Todo added successfully");
     } catch (error) {
       console.error('Error adding todo:', error);
@@ -31,17 +32,21 @@ function App() {
   }
 
   async function updateTodo(){
-    await axios.put(`http://192.168.0.105:8100/todos/update/${editId}`, { text });
-    setText("");
+    await axios.put(`http://192.168.0.105:8100/todos/update/${editId}`, { editText });
+    setEditText("");
+    await findTodos();
     setEditId(-1);
+
   }
-  function deleteTodo(){
-    let a = 2;
+  async function deleteTodo(){
+    await axios.delete(`http://192.168.0.105:8100/todos/delete/${editId}`);
+    await findTodos();
+    setEditId(-1);
   }
 
 
   return (
-<div className='outer-container'>
+
   
     <div className='inner-container'>
     <div class="header-class">TODO APPLICATION</div>
@@ -61,14 +66,16 @@ function App() {
 
       }} onClick={findTodos}>All Todo</button>
       <br /> */}
+      <div className='section'>
 
       {
         todos.map((todo, index) =>
+          
           <div className='todo-container' key={todo._id}>
             {todo._id === editId ?
               (<>
-                <input type="text" value={text} onChange={(e) => {
-                  setText(e.target.value);
+                <input type="text" value={editText} onChange={(e) => {
+                  setEditText(e.target.value);
                 }}></input>
                 <button id='one' onClick = {updateTodo}>update</button>
                 <button id='delete-button' onClick={deleteTodo}>delete</button>
@@ -83,7 +90,7 @@ function App() {
               <div className = 'button-class'>
               <button onClick={() => {
                 setEditId(todo._id);
-                setText(todo.todo);
+                setEditText(todo.todo);
                 
                 
               }}>edit</button>
@@ -93,11 +100,13 @@ function App() {
             </div>
             
         )
+        
       }
+      </div>
 
 
     </div>
-    </div>
+    
   )
 }
 
