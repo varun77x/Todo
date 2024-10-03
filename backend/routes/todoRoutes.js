@@ -36,8 +36,8 @@ router.put('/update/:editId', async (req, res) => {
     }
     res.status(200).json({ message: "done" });
 })
-router.delete('/delete/:editId',async (req,res)=>{
-    const deleteId = req.params.editId;
+router.delete('/delete/:todoId',async (req,res)=>{
+    const deleteId = req.params.todoId;
     const deleteResult  = await Todo.deleteOne({_id:deleteId});
     if (deleteResult.deletedCount > 0) {
         res.json({ message: 'User deleted successfully' });

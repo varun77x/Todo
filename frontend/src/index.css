@@ -162,9 +162,9 @@ body {
     
     font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif ;
 }
-.todo-container:hover .button-class button{
+/* .todo-container:hover .button-class button{
 display: block;
-}
+} */
 
 .todo-container .inner-todo{
     display: flex;
@@ -205,17 +205,17 @@ display: block;
 }
 .button-class button{
     padding: 7px;
-    display: none;
-    color: #605b5b;
+    
+    color: #9d9494;
     border-radius: 8px;
     margin-top:13px;
     
     border: none;
     /* border-radius: 0px 6px 6px 0px; */
-    background-color: rgb(219, 223, 227);
+    background-color: rgb(229, 237, 245);
 }
 .button-class button:hover{
     
     /* border-radius: 0px 6px 6px 0px; */
-    background-color: rgb(162, 165, 168);
+    background-color: rgb(204, 219, 228);
 }

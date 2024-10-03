@@ -2,8 +2,10 @@ import { useEffect, useState } from 'react'
 import reactLogo from './assets/react.svg'
 import viteLogo from '/vite.svg'
 import './App.css'
-import axios from 'axios';
+import axios, { all } from 'axios';
 import './index.css';
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 function App() {
   // const [todo, setTodo] = useState([]);
@@ -21,6 +23,9 @@ function App() {
   },[]);
 
   async function addTodo() {
+    if(!text){
+      return;
+    }
     try {
       await axios.post('http://192.168.0.105:8100/todos/create', { text });
       setText("");  // Clear the input field
@@ -38,22 +43,37 @@ function App() {
     setEditId(-1);
 
   }
-  async function deleteTodo(){
-    await axios.delete(`http://192.168.0.105:8100/todos/delete/${editId}`);
+  async function deleteTodo(todoId){
+    
+    await axios.delete(`http://192.168.0.105:8100/todos/delete/${todoId}`);
     await findTodos();
     setEditId(-1);
   }
+  function handleKeyDown(e){
+    if (e.key === 'Enter') {
+      addTodo(); 
+    }
+  }
+  // var deleteButtonText = "delete";
 
 
   return (
 
   
     <div className='inner-container'>
-    <div class="header-class">TODO APPLICATION</div>
+    <div className="header-class">TODO APPLICATION</div>
 
       <input id="todo-input" type="text" placeholder='Type your todo' value={text} onChange={(e) => {
-        setText(e.target.value);
-      }}></input>
+        
+        if(text.length > 25){
+          toast.info("character limit exceed");
+        }
+        else{
+          setText(e.target.value);
+        }
+      }}
+      onKeyDown={handleKeyDown}
+      ></input>
       <br />
 
       <button id="add-todo" onClick={addTodo}>Add Todo</button>
@@ -78,7 +98,7 @@ function App() {
                   setEditText(e.target.value);
                 }}></input>
                 <button id='one' onClick = {updateTodo}>update</button>
-                <button id='delete-button' onClick={deleteTodo}>delete</button>
+                
                 <button id='two' onClick = {()=>{
                   setEditId(-1);
                 }}>cancel</button>
@@ -88,6 +108,12 @@ function App() {
               <div className='inner-todo'>{todo.todo}</div>
               
               <div className = 'button-class'>
+              <button id='delete-button' onClick={()=>{
+                toast.info("Deleting...");
+                console.log(todo._id);
+                deleteTodo(todo._id);
+              }
+              }>delete</button>
               <button onClick={() => {
                 setEditId(todo._id);
                 setEditText(todo.todo);
@@ -102,6 +128,13 @@ function App() {
         )
         
       }
+      <ToastContainer
+      position='bottom-center'
+      autoClose={500}
+      hideProgressBar={true}
+      newestOnTop={true}
+      
+      />
       </div>
 
 
