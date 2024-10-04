@@ -64,12 +64,12 @@ function App() {
     <div className="header-class">TODO APPLICATION</div>
 
       <input id="todo-input" type="text" placeholder='Type your todo' value={text} onChange={(e) => {
-        
-        if(text.length > 25){
+        let inputText = e.target.value;
+        if(inputText.length > 25){
           toast.info("character limit exceed");
         }
         else{
-          setText(e.target.value);
+          setText(inputText);
         }
       }}
       onKeyDown={handleKeyDown}
