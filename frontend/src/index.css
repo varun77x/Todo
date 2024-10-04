@@ -78,6 +78,7 @@ body {
     box-sizing: border-box;
 }
 #todo-input{
+    flex-shrink: 0;
     border:none;
     font-size: 28px;
     border-bottom:1px solid darkgray;
@@ -88,8 +89,9 @@ body {
     box-sizing: border-box;
     outline:none;
     transition: all 1s ease-out;
+    
 }
-#todo-input:focus{
+#todo-input:hover{
     background-color: rgb(186, 225, 212);
 }
 
