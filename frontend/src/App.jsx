@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react'
+import { useEffect, useState,useRef } from 'react'
 import reactLogo from './assets/react.svg'
 import viteLogo from '/vite.svg'
 import './App.css'
@@ -13,6 +13,7 @@ function App() {
   const [todos, setTodos] = useState([]);
   const [editId , setEditId] = useState(-1);
   const [editText,setEditText] = useState("");
+  const updateInputRef = useRef();
 
   async function findTodos() {
     const response = await axios.get('http://192.168.0.105:8100/todos/find');
@@ -55,7 +56,14 @@ function App() {
     }
   }
   // var deleteButtonText = "delete";
-
+  useEffect(() => {
+    if (editId !== -1) {
+      updateInputRef.current.focus();
+    }
+  }, [editId]);
+  // function handleRef(){
+  //   updateInputRef.current.focus();
+  // }
 
   return (
 
@@ -94,9 +102,13 @@ function App() {
           <div className='todo-container' key={todo._id}>
             {todo._id === editId ?
               (<>
-                <input type="text" value={editText} onChange={(e) => {
+                <input ref={updateInputRef} type="text" value={editText} onChange={(e) => {
                   setEditText(e.target.value);
                 }}></input>
+
+                {/* {
+                updateInputRef.current? updateInputRef.current.focus() : handleRef()
+                } */}
                 <button id='one' onClick = {updateTodo}>update</button>
                 
                 <button id='two' onClick = {()=>{
