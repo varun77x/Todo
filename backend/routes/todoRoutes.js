@@ -4,6 +4,7 @@ const router = express.Router();
 const Todo = require('../models/todoModel');
 
 router.get('/find', async (req, res) => {
+    console.log("hi");
     const todos = await Todo.find();
     res.json(todos);
 })
@@ -17,10 +18,10 @@ router.post('/create', async (req, res) => {
     console.log("todo created");
 })
 router.put('/update/:editId', async (req, res) => {
-    //no TRY CATCH , we go RAW
+    
     const id = req.params.editId;
     console.log(id);
-    const textToUpdate = req.body.text;
+    const textToUpdate = req.body.editText;
 
     const result = await Todo.updateOne(
         { _id: id },
