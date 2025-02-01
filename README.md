@@ -2,7 +2,7 @@
 
 *A simple todo application made with MongoDB, ExpressJs, ReactJs, NodeJs, TailwindCSS.*
 
-![video](frontend/src/assets/todo_giff.gif)
+![video](frontend/src/assets/todo_github.mkv)
 
 
 ## Functionalities
