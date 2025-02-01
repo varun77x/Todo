@@ -31,6 +31,13 @@ npm install
 cd backend
 npm install
 ```
+
+4. Create .env file in `backend`
+```bash
+MONGO_URI = Your mongo connection string
+PORT = Your desired port
+```
+
 ## Running the Application
 
 1.Start the backend server
